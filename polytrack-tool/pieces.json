@@ -1,0 +1,21 @@
+{
+  "start": { "partId": 5, "baseRot": 0, "step": { "dx": 0, "dy": 0, "dz": -1 }, "rotDelta": 0 },
+  "straight": { "partId": 0, "baseRot": 0, "step": { "dx": 0, "dy": 0, "dz": -1 }, "rotDelta": 0 },
+  "end": { "partId": 6, "baseRot": 0, "step": { "dx": 0, "dy": 0, "dz": 0 }, "rotDelta": 0 },
+  "finish": { "partId": 6, "baseRot": 0, "step": { "dx": 0, "dy": 0, "dz": 0 }, "rotDelta": 0 },
+
+  "right1": { "partId": 36, "baseRot": 0, "step": { "dx": 2, "dy": 0, "dz": -1 }, "rotDelta": 1 },
+  "right2": { "partId": 37, "baseRot": 0, "step": { "dx": 3, "dy": 0, "dz": -2 }, "rotDelta": 1 },
+  "right3": { "partId": 82, "baseRot": 0, "step": { "dx": 4, "dy": 0, "dz": -3 }, "rotDelta": 1 },
+  "right4": { "partId": 83, "baseRot": 0, "step": { "dx": 5, "dy": 0, "dz": -4 }, "rotDelta": 1 },
+
+  "left1": { "partId": 36, "baseRot": 0, "step": { "dx": -2, "dy": 0, "dz": -1 }, "rotDelta": 3 },
+  "left2": { "partId": 37, "baseRot": 0, "step": { "dx": -3, "dy": 0, "dz": -2 }, "rotDelta": 3 },
+  "left3": { "partId": 82, "baseRot": 0, "step": { "dx": -4, "dy": 0, "dz": -3 }, "rotDelta": 3 },
+  "left4": { "partId": 83, "baseRot": 0, "step": { "dx": -5, "dy": 0, "dz": -4 }, "rotDelta": 3 },
+
+  "shiftleft": { "partId": 41, "baseRot": 0, "step": { "dx": -1, "dy": 0, "dz": -3 }, "rotDelta": 0 },
+  "shiftright": { "partId": 42, "baseRot": 0, "step": { "dx": 1, "dy": 0, "dz": -3 }, "rotDelta": 0 }
+}
+
+

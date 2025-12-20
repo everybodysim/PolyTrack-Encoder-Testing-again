@@ -1,0 +1,12 @@
+{
+  "name": "polytrack-tool",
+  "version": "0.4.1-tool.1",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "cli": "node src/cli.js",
+    "server": "node server.js"
+  }
+}
+
+

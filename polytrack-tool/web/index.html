@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PolyTrack Tool (v3)</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --card: #111a2e;
+      --text: #e8eefc;
+      --muted: #aab6d6;
+      --accent: #4f8cff;
+      --danger: #ff4d5e;
+      --border: rgba(255,255,255,0.12);
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 20% 0%, #162449 0%, var(--bg) 55%);
+      color: var(--text);
+    }
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    .header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 8px 0 14px;
+    }
+    .header h1 {
+      font-size: 20px;
+      margin: 0;
+      letter-spacing: 0.2px;
+    }
+    .header .hint {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .card {
+      background: rgba(17, 26, 46, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 820px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    label {
+      display: block;
+      margin: 0 0 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    input, select, textarea, button {
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 10px 12px;
+      font-size: 14px;
+      outline: none;
+    }
+    textarea {
+      min-height: 120px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      resize: vertical;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media (min-width: 520px) {
+      .row { grid-template-columns: 1.1fr 0.9fr; }
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 12px;
+    }
+    button {
+      background: linear-gradient(180deg, rgba(79,140,255,1) 0%, rgba(65,120,230,1) 100%);
+      border: 1px solid rgba(79,140,255,0.65);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button.secondary {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      font-weight: 600;
+    }
+    button:disabled { opacity: 0.65; cursor: not-allowed; }
+    .error {
+      display: none;
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,77,94,0.45);
+      background: rgba(255,77,94,0.12);
+      color: #ffd7dc;
+      white-space: pre-wrap;
+    }
+    .out {
+      display: none;
+      margin-top: 12px;
+    }
+    .out textarea { min-height: 130px; }
+    .small {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+      line-height: 1.35;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <h1>PolyTrack Tool (v3)</h1>
+      <div class="hint">Local only • Encoder/placer guards enabled</div>
+    </div>
+
+    <div class="card">
+      <div class="grid">
+        <div>
+          <div class="row">
+            <div>
+              <label for="trackName">Track name</label>
+              <input id="trackName" type="text" value="MyTrack" placeholder="MyTrack" />
+            </div>
+            <div>
+              <label for="describer">Describer</label>
+              <select id="describer">
+                <option value="commaSimple">commaSimple (comma-separated tokens)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top: 12px;">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="start, straight, right2, straight, left1, end"></textarea>
+            <div class="small">
+              Tip: tokens are normalized (trim + lowercase + remove spaces). Example: <code>shift left</code> becomes <code>shiftleft</code>.
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="generateBtn">Generate</button>
+            <button id="clearBtn" class="secondary" type="button">Clear</button>
+          </div>
+
+          <div id="errorBox" class="error"></div>
+        </div>
+
+        <div>
+          <div class="out" id="outputWrap">
+            <label for="outputCode">v3 code</label>
+            <textarea id="outputCode" readonly></textarea>
+            <div class="actions">
+              <button id="copyBtn" class="secondary" type="button">Copy</button>
+            </div>
+            <div class="small">If PolyTrack rejects an import, it’s usually a placement/guard issue (overlap/collision) or a mismatched piece step.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+
